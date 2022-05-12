@@ -1,0 +1,185 @@
+﻿<Window x:Class="DaDaYaRemastered.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DaDaYaRemastered"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1000" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+
+        <Grid Grid.Row="0" Background="#FFCFF7FF">
+            <Image Source="Border.png" Stretch="Fill"/>
+            <!-- <Image Source="Cringe House.png" HorizontalAlignment="Left" Margin="90 0" VerticalAlignment="Center"/> -->
+            <Label Content="CringeHouse" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40" FontWeight="UltraBold" Margin="0">
+                <Label.Foreground>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF06FF00"/>
+                        <GradientStop Color="#FF28CDFF" Offset="0.163"/>
+                    </RadialGradientBrush>
+                </Label.Foreground>
+            </Label>
+        </Grid>
+
+        <!--Body-->
+        <Grid Grid.Row="1"  Background="#FFCFF7FF">
+            <TabControl Name="Options" >
+
+                <!--Недвижимость-->
+                <TabItem Header="Недвижимость" Name="TabItemEstates" >
+                    <Grid Background="AliceBlue">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="39*"/>
+                            <RowDefinition Height="284*"/>
+                            <RowDefinition Height="179*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="355*"/>
+                            <ColumnDefinition Width="609*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="estateDescription" Grid.Row="1" Grid.Column="1" Margin="10 1 20 107"
+                                   Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding EstateDescription}"/>
+
+                        <ListView Name="estateList" HorizontalAlignment="Left" Height="256" Margin="10 1 0 0"
+                                  VerticalAlignment="Top" Width="339" Grid.Row="1" Grid.Column="0"
+                                  SelectionChanged="estateList_SelectionChanged" ItemsSource="{Binding Collections}" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.Columns>
+                                        <GridViewColumn Header="Назначение объекта" 
+                                                        DisplayMemberBinding="{Binding EstateName}"/>
+                                        <GridViewColumn Header="Город" 
+                                                        DisplayMemberBinding="{Binding City}"/>
+                                        <GridViewColumn Header="Адрес" 
+                                                        DisplayMemberBinding="{Binding Adress}"/>
+                                        <GridViewColumn Header="Площадь" 
+                                                        DisplayMemberBinding="{Binding Square}"/>
+                                        <GridViewColumn Header="Цена" 
+                                                        DisplayMemberBinding="{Binding Price}"/>
+                                        <GridViewColumn Header="Дата постройки" 
+                                                        DisplayMemberBinding="{Binding Date}"/>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                        <Label Content="Сортировка объектов" Margin="10,10,210,130" Grid.Row="2" Grid.Column="0" />
+                        <ComboBox Margin="160,10,1,140" Grid.Row="2" Name="Sort" VerticalContentAlignment="Center">
+                            <ComboBoxItem Name="SortCost" Content="по цене" />
+                            <ComboBoxItem Name="SortYear" Content="по году постройки" />
+                            <ComboBoxItem Name="SortArea" Content="по площади"/>
+                            <ComboBoxItem Name="SortOnSale" Content="продаются" />
+                            <ComboBoxItem Name="SortSaled" Content="проданные" />
+                            <ComboBoxItem Name="SortWithout" Content="без сортировки" />
+                        </ComboBox>
+
+                        <Label Content="Город:" Margin="10,60,210,90" Grid.Row="2" Grid.Column="0" />
+                        <TextBox Margin="160,60,-5,90" Grid.Row="2" Name="SortCity" VerticalContentAlignment="Center" Grid.Column="0"
+                                 TextChanged="SortCity_TextChanged"/>
+
+                        <Button Name="addEstate" Content="Добавить" Grid.Row="2" Grid.Column="1"
+                                Margin="281,130,236,16" Click="addEstate_Click"/>
+                        <Button Name="changeEstate" Content="Изменить" Grid.Row="2" Grid.Column="1" 
+                                Margin="399,130,118,16" Click="changeEstate_Click"/>
+                        <Button Name="deleteEstate" Content="Удалить" Grid.Row="2" Grid.Column="1"
+                                Margin="515,130,2,16" Click="deleteEstate_Click"/>
+                    </Grid>
+                </TabItem>
+
+
+                <!--Клиенты-->
+                <TabItem x:Name="Sell"  Header="Клиенты">
+                    <Grid Background="AliceBlue">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Продавцы" Style="{StaticResource blockBottom}" VerticalAlignment="Bottom"/>
+                        <TextBlock Grid.Column="1" Text="Покупатели" Style="{StaticResource blockBottom}" VerticalAlignment="Bottom"/>
+
+
+                        <!--Left-->
+                        <ListView Grid.Row="1" Margin="10 10 40 10">
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.Columns>
+                                        <GridViewColumn/>
+                                        <GridViewColumn/>
+                                        <GridViewColumn/>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                        <!--Right-->
+                        <ListView Grid.Row="1" Grid.Column="1" Margin="10 10 40 10">
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.Columns>
+                                        <GridViewColumn/>
+                                        <GridViewColumn/>
+                                        <GridViewColumn/>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+
+                <!--Договоры-->
+                <TabItem x:Name="Treties" Header="Договоры">
+                    <Grid Background="AliceBlue">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90*"/>
+                            <RowDefinition Height="10*"/>
+                        </Grid.RowDefinitions>
+                        <ListView x:Name="TretiesList" Margin="1 10 1 1" ItemsSource="{Binding Treties}"
+                                  SelectionChanged="TretiesList_SelectionChanged" Grid.ColumnSpan="2">
+                            <ListView.View>
+                                <GridView>
+                                    <GridView.Columns>
+                                        <GridViewColumn Header="Номер договора" x:Name="numberTreat" Width="100" DisplayMemberBinding="{Binding Id}"/>
+                                        <GridViewColumn Header="Дата заключения" Width="100" DisplayMemberBinding="{Binding DataAccept}"/>
+                                        <GridViewColumn Header="Покупатель" Width="100" DisplayMemberBinding="{Binding Buyer}"/>
+                                        <GridViewColumn Header="Продавец" Width="100" DisplayMemberBinding="{Binding Consumer}"/>
+                                        <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}"/>
+                                        <GridViewColumn Header="Объект недвижимости"  Width="500" DisplayMemberBinding="{Binding EstateName}"/>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+
+                        <Grid Grid.Row="1">
+                            <Button x:Name="B" Content="Удалить" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                    Style="{StaticResource buttonContracts}"/>
+                            <Button x:Name="sB" Content="" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                    Style="{StaticResource buttonContracts}" Margin="10 10 90 10"/>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
+
+            </TabControl>
+        </Grid>
+
+        <!--Bottom-->
+        <Grid Grid.Row="2"  Background="#FFCFF7FF">
+            <TextBlock Text="Тех. поддержка 8-900-222-43-54" Style="{StaticResource blockBottom}" />
+        </Grid>
+    </Grid>
+</Window>
