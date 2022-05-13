@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DaDaYaRemastered"
         mc:Ignorable="d"
-        Title="Главное окно" Height="700" Width="1000" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Главное окно" Height="700" Width="1000" WindowStartupLocation="CenterScreen" Icon="Cringe House (icon).png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -76,12 +76,11 @@
 
                         <Label Content="Сортировка объектов" Margin="10,10,210,130" Grid.Row="2" Grid.Column="0" />
                         <ComboBox Margin="160,10,1,140" Grid.Row="2" Name="Sort" VerticalContentAlignment="Center">
-                            <ComboBoxItem Name="SortCost" Content="по цене" />
-                            <ComboBoxItem Name="SortYear" Content="по году постройки" />
-                            <ComboBoxItem Name="SortArea" Content="по площади"/>
-                            <ComboBoxItem Name="SortOnSale" Content="продаются" />
-                            <ComboBoxItem Name="SortSaled" Content="проданные" />
-                            <ComboBoxItem Name="SortWithout" Content="без сортировки" />
+                            <ComboBoxItem Name="SortName" Content="по назначению" Selected="SortName_Selected"/>
+                            <ComboBoxItem Name="SortCost" Content="по цене" Selected="SortCost_Selected"/>
+                            <ComboBoxItem Name="SortYear" Content="по году постройки" Selected="SortYear_Selected" />
+                            <ComboBoxItem Name="SortArea" Content="по площади" Selected="SortArea_Selected"/> 
+                            <ComboBoxItem Name="SortWithout" Content="без сортировки" Selected="SortWithout_Selected"/>
                         </ComboBox>
 
                         <Label Content="Город:" Margin="10,60,210,90" Grid.Row="2" Grid.Column="0" />
@@ -139,7 +138,13 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
+                    <Button Name="addBuyer" Content="Добавить" Grid.Row="2"  Margin="-70 20 20 20" Style="{StaticResource buttonContracts}"/>
+                    <Button Name="changeBuyer" Content="Изменить" Grid.Row="2" Margin="-220 20 20 20" Style="{StaticResource buttonContracts}"/>
+                    <Button Name="deleteBuyer" Content="Удалить" Grid.Row="2" Margin="-370 20 20 20" Style="{StaticResource buttonContracts}"/>
+                    <Button x:Name="changeOwner" Content="Изменить" Grid.Row="2" Grid.Column="1" Margin="0" Style="{StaticResource buttonContracts}"/>
+                    <Button x:Name="deleteOwner" Content="Удалить" Grid.Row="2" Grid.Column="1" Margin="200 20 20 20" Style="{StaticResource buttonContracts}"/>
                     </Grid>
+
                 </TabItem>
 
                 <!--Договоры-->

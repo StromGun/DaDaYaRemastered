@@ -118,5 +118,8 @@
   <ItemGroup>
     <Resource Include="Cringe House.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cringe House %28icon%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

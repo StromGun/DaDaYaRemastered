@@ -26,15 +26,20 @@ namespace DaDaYaRemastered
                 collectionEstates.EstateName = estateName.Text;
                 collectionEstates.Adress = estateAdress.Text;
                 collectionEstates.Price = int.Parse(estatePrice.Text);
-                collectionEstates.Date = int.Parse(estateBirthday.Text);
                 collectionEstates.City = estateCity.Text;
                 collectionEstates.Square = int.Parse(estateSquare.Text);
+                collectionEstates.Date = int.Parse(estateBirthday.Text);
+
+                if (int.Parse(estateBirthday.Text) < 2022)
+                {
+                    estateRepository.AddEstate(collectionEstates);
+                    MessageBox.Show("Данные добавлены.");
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Неверная дата");
 
 
-                estateRepository.AddEstate(collectionEstates);
-
-                MessageBox.Show("Данные добавлены.");
-                this.Close();
             }
             catch (Exception ex)
             {

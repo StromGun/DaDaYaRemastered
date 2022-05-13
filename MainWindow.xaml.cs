@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace DaDaYaRemastered
@@ -17,10 +20,6 @@ namespace DaDaYaRemastered
             InitializeComponent();
 
             UpdateSelectedEstate();
-
-        }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
 
         }
 
@@ -69,19 +68,60 @@ namespace DaDaYaRemastered
             else
                 MessageBox.Show("Объект не выбран. Выберите объект для внесения изменений.");
         }
+        private void SortCity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+        private void estateList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollectionEstates selectedEstate = estateList.SelectedItem as CollectionEstates;
 
+            if (selectedEstate != null)
+            {
+                estateDescription.Text =                 
+                    $"Общая площадь: {selectedEstate.Square} \n" +
+                    $"Местонахождение: {selectedEstate.Adress} \n" +
+                    $"Назначение: {selectedEstate.EstateName} \n" +
+                    $"Год постройки: {selectedEstate.Date} \n" +
+                    $"Цена продажи: {selectedEstate.Price} руб.\n";
+            }
+        }
+
+        #endregion
+        #region Sort
+
+        private void SortName_Selected(object sender, RoutedEventArgs e)
+        {
+            estateList.Items.SortDescriptions.Clear();
+            estateList.Items.SortDescriptions.Add(new SortDescription("EstateName", ListSortDirection.Ascending));
+        }
+
+        private void SortCost_Selected(object sender, RoutedEventArgs e)
+        {
+            estateList.Items.SortDescriptions.Clear();
+            estateList.Items.SortDescriptions.Add(new SortDescription("Price", ListSortDirection.Ascending));
+        }
+
+        private void SortYear_Selected(object sender, RoutedEventArgs e)
+        {
+            estateList.Items.SortDescriptions.Clear();
+            estateList.Items.SortDescriptions.Add(new SortDescription("Date", ListSortDirection.Ascending));
+        }
+
+        private void SortArea_Selected(object sender, RoutedEventArgs e)
+        {
+            estateList.Items.SortDescriptions.Clear();
+            estateList.Items.SortDescriptions.Add(new SortDescription("Square", ListSortDirection.Ascending));
+        }
+
+        private void SortWithout_Selected(object sender, RoutedEventArgs e)
+        {
+            UpdateSelectedEstate();
+        }
         #endregion
 
 
-        private void estateList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
-
-        private void SortCity_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
         private void TretiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
