@@ -33,6 +33,7 @@ namespace DaDaYaRemastered
 
         private void GetData(CollectionEstates estate)
         {
+            updateEstates.Id = estate.Id;
             estateName.Text = estate.EstateName.Trim();
             estatePrice.Text = estate.Price.ToString();
             estateSquare.Text = estate.Square.ToString();

@@ -17,7 +17,10 @@ namespace DaDaYaRemastered
 
         public void AddEstate(CollectionEstates estate)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-Q38R64P;Initial Catalog=RealEstateAgency;Integrated Security=True"))
+            //
+            // поменять connection
+            //
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 using (SqlCommand insertCommand = new SqlCommand("Insert Into dbo.EstatesTable " +
                                "(EstateName, Price, Square, " +
@@ -45,7 +48,10 @@ namespace DaDaYaRemastered
 
         public void DeleteEstate(CollectionEstates estate)
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            //
+            // поменять connection
+            //
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
               using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM dbo.EstatesTable " +
                                "WHERE Id = @Id", connection))
@@ -62,19 +68,21 @@ namespace DaDaYaRemastered
 
         public void UpdateEstate(CollectionEstates estate)
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            //
+            // поменять connection
+            //
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.EstatesTable " +
                                "SET " +
 
-                               "Id = @Id, " +
+                               //"Id = @Id, " +
                                "EstateName = @EstateName, " +
                                "Adress = @Adress, " +
                                "Price = @Price, " +
                                "Square = @Square, " +
-                               "City = @City " +
+                               "City = @City, " +
                                "Date = @Date " +
-
                                "WHERE Id = @Id", connection))
                 {
                     updateCommand.Parameters.Clear();
@@ -96,7 +104,10 @@ namespace DaDaYaRemastered
 
         public IEnumerable<CollectionEstates> GetAll()
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            //
+            // поменять connection
+            //
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 connection.Open();
 
