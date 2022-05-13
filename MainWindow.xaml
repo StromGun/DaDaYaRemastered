@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DaDaYaRemastered"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Главное окно" Height="700" Width="1000" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -17,9 +17,9 @@
 
         <Grid Grid.Row="0" Background="#FFCFF7FF">
             <Image Source="Border.png" Stretch="Fill"/>
-            <!-- <Image Source="Cringe House.png" HorizontalAlignment="Left" Margin="90 0" VerticalAlignment="Center"/> -->
+            <Image Source="Cringe House.png" HorizontalAlignment="Left" Margin="40 0" VerticalAlignment="Center"/>
             <Label Content="CringeHouse" HorizontalAlignment="Center" VerticalAlignment="Center"
-                   FontSize="40" FontWeight="UltraBold" Margin="0">
+                   FontSize="40" FontWeight="UltraBold" Margin="0 -20 0 0">
                 <Label.Foreground>
                     <RadialGradientBrush>
                         <GradientStop Color="#FF06FF00"/>
@@ -27,6 +27,8 @@
                     </RadialGradientBrush>
                 </Label.Foreground>
             </Label>
+            <Label Content="Агенство недвижимости" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontWeight="ExtraBlack" Margin="0 50 0 0 " Foreground="#FF00BAFF"/>
         </Grid>
 
         <!--Body-->

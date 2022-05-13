@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Configuration;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace DaDaYaRemastered
@@ -35,6 +25,8 @@ namespace DaDaYaRemastered
         }
 
         #region Action with Estate
+
+
         private void UpdateSelectedEstate()
         {
             estateRepository = new EstateRepository();
@@ -77,6 +69,7 @@ namespace DaDaYaRemastered
             else
                 MessageBox.Show("Объект не выбран. Выберите объект для внесения изменений.");
         }
+
         #endregion
 
 
