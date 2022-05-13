@@ -53,5 +53,10 @@ namespace DaDaYaRemastered
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

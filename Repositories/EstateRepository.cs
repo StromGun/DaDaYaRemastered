@@ -15,11 +15,11 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 using (SqlCommand insertCommand = new SqlCommand("Insert Into dbo.EstatesTable " +
                                "(EstateName, Price, Square, " +
-                               "City, Adress, Date) Values (@EstateName, @Price, @Square, @City, @Adress, @Date) ", connection))
+                               "City, Adress, Date) Values (@EstateName, @Price, @Square, @City, @Adress, @Date)", connection))
                 {
 
                     //foreach (CollectionEstates _estate in _estateCollection)
@@ -46,7 +46,7 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
               using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM dbo.EstatesTable " +
                                "WHERE Id = @Id", connection))
@@ -66,7 +66,7 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.EstatesTable " +
                                "SET " +
@@ -102,7 +102,7 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 connection.Open();
 

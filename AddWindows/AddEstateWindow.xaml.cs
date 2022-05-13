@@ -12,6 +12,9 @@ namespace DaDaYaRemastered
         CollectionEstates collectionEstates = new CollectionEstates();
         IEstatesRepository estateRepository = new EstateRepository();
 
+        CollectionOwners collectionOwners = new CollectionOwners();
+        IOwnerRepository ownerRepository = new OwnerRepository();
+
         public AddEstateWindow()
         {
             InitializeComponent();
@@ -30,9 +33,13 @@ namespace DaDaYaRemastered
                 collectionEstates.Square = int.Parse(estateSquare.Text);
                 collectionEstates.Date = int.Parse(estateBirthday.Text);
 
+                collectionOwners.OwnerName = estateOwner.Text;
+                collectionOwners.OwnerTelephone = ownerTelephone.Text;
+
                 if (int.Parse(estateBirthday.Text) < 2022)
                 {
                     estateRepository.AddEstate(collectionEstates);
+                    ownerRepository.AddOwner(collectionOwners);
                     MessageBox.Show("Данные добавлены.");
                     this.Close();
                 }
@@ -45,6 +52,11 @@ namespace DaDaYaRemastered
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

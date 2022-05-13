@@ -51,7 +51,9 @@
             <TextBox x:Name="estateAdress" Grid.Row="4"/>
             <TextBox x:Name="estateBirthday" Grid.Row="5"/>
             <Button x:Name="ChangeButton" Content="Изменить" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="5"
-                    Margin="0 16 30 0 " Click="ChangeButton_Click"/>
+                    Margin="0 16 110 0 " Click="ChangeButton_Click"/>
+            <Button x:Name="CancelButton" Content="Отмена" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="5"
+                    Margin="0 16 20 0 " Click="CancelButton_Click" />
         </Grid>
     </Grid>
 </Window>

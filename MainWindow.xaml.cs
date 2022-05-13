@@ -13,6 +13,7 @@ namespace DaDaYaRemastered
     {
         public string connectionString;
 
+        private IOwnerRepository _ownerRepository;
         private IEstatesRepository estateRepository;
 
         public MainWindow()
@@ -20,6 +21,7 @@ namespace DaDaYaRemastered
             InitializeComponent();
 
             UpdateSelectedEstate();
+            UpdateSelectedOwner();
 
         }
 
@@ -43,6 +45,7 @@ namespace DaDaYaRemastered
            winAddEstate.ShowDialog();
 
             UpdateSelectedEstate();
+            UpdateSelectedOwner();
         }
 
         private void changeEstate_Click(object sender, RoutedEventArgs e)
@@ -68,10 +71,6 @@ namespace DaDaYaRemastered
             else
                 MessageBox.Show("Объект не выбран. Выберите объект для внесения изменений.");
         }
-        private void SortCity_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
         private void estateList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CollectionEstates selectedEstate = estateList.SelectedItem as CollectionEstates;
@@ -87,6 +86,58 @@ namespace DaDaYaRemastered
             }
         }
 
+        #endregion
+        #region Action with Owners
+        private void UpdateSelectedOwner()
+        {
+            _ownerRepository = new OwnerRepository();
+            OwnerList.Items.Clear();
+            foreach (CollectionOwners owners in _ownerRepository.GetAll())
+            {
+                OwnerList.Items.Add(owners);
+            }
+        }
+        private void changeOwner_Click(object sender, RoutedEventArgs e)
+        {
+            if ( OwnerList.SelectedItem is CollectionOwners)
+            {
+                ChangeOwnerWindow changeOwnerWindow = new ChangeOwnerWindow((CollectionOwners)OwnerList.SelectedItem);
+                changeOwnerWindow.Owner = this;
+                changeOwnerWindow.ShowDialog();
+                UpdateSelectedOwner();
+            }
+            else
+            {
+                MessageBox.Show("Не выбран объект");
+            }
+        }
+        private void deleteOwner_Click(object sender, RoutedEventArgs e)
+        {
+            if (OwnerList.SelectedItem is CollectionOwners)
+            {
+                _ownerRepository.DeleteOwner((CollectionOwners)OwnerList.SelectedItem);
+                UpdateSelectedOwner();
+            }
+            else
+                MessageBox.Show("Объект не выбран. Выберите объект для внесения изменений.");
+        }
+
+        #endregion
+        #region Action with Buyers
+        private void addBuyer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void changeBuyer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteBuyer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         #endregion
         #region Sort
 
@@ -118,6 +169,17 @@ namespace DaDaYaRemastered
         {
             UpdateSelectedEstate();
         }
+        private void SortCity_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+           // estateRepository = new EstateRepository();
+           // estateList.Items.Clear();
+           // foreach (CollectionEstates estate in estateRepository.GetAll())
+           // {
+           //     if (SortCity.Text == estate.City.ToString().Trim() && SortCity.Text!=null)
+           //        estateList.Items.Add(estate);
+           // }
+
+        }
         #endregion
 
 
@@ -127,5 +189,8 @@ namespace DaDaYaRemastered
 
         }
 
+        
+
+        
     }
 }

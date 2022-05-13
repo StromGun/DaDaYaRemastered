@@ -12,20 +12,22 @@
             <ColumnDefinition Width="70*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="5*"/>
 
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1"  Background="AliceBlue">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Назначение объекта"/>
             <Label Grid.Row="1"  Content="Площадь"/>
@@ -33,16 +35,20 @@
             <Label Grid.Row="3"  Content="Город"/>
             <Label Grid.Row="4"  Content="Адрес"/>
             <Label Grid.Row="5"  Content="Дата постройки"/>
+            <Label Grid.Row="6"  Content="ФИО продавца"/>
+            <Label Grid.Row="7"  Content="Номер телефона"/>
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1"  Background="AliceBlue" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <TextBox x:Name="estateName" Grid.Row="0"/>
             <TextBox x:Name="estateSquare"  Grid.Row="1"/>
@@ -50,8 +56,12 @@
             <TextBox x:Name="estateCity"  Grid.Row="3"/>
             <TextBox x:Name="estateAdress" Grid.Row="4"/>
             <TextBox x:Name="estateBirthday" Grid.Row="5"/>
-            <Button x:Name="AddButton" Content="Добавить" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="5"
-                    Margin="0 16 30 0 " Click="AddButton_Click"/>
+            <TextBox x:Name="estateOwner" Grid.Row="6"/>
+            <TextBox x:Name="ownerTelephone" Grid.Row="7"/>
+            <Button x:Name="AddButton" Content="Добавить" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="7"
+                    Margin="0 16 100 0 " Click="AddButton_Click"/>
+            <Button x:Name="CancelButton" Content="Отмена" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="7"
+                    Margin="0 16 10 0 " Click="CancelButton_Click"/>
         </Grid>
     </Grid>
 </Window>

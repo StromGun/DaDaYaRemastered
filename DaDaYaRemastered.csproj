@@ -56,11 +56,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AddEstateWindow.xaml">
+    <Compile Include="ChangeWindows\ChangeOwnerWindow.xaml.cs">
+      <DependentUpon>ChangeOwnerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\IOwnerRepository.cs" />
+    <Compile Include="Repositories\OwnerRepository.cs" />
+    <Page Include="ChangeWindows\ChangeOwnerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChangeEstateWindow.xaml">
+    <Page Include="AddWindows\AddEstateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeWindows\ChangeEstateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -68,19 +77,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddEstateWindow.xaml.cs">
+    <Compile Include="AddWindows\AddEstateWindow.xaml.cs">
       <DependentUpon>AddEstateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ChangeEstateWindow.xaml.cs">
+    <Compile Include="ChangeWindows\ChangeEstateWindow.xaml.cs">
       <DependentUpon>ChangeEstateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CollectionEstates.cs" />
-    <Compile Include="EstateRepository.cs" />
-    <Compile Include="IEstatesRepository.cs" />
+    <Compile Include="Collections\CollectionEstates.cs" />
+    <Compile Include="Collections\CollectionOwners.cs" />
+    <Compile Include="Repositories\EstateRepository.cs" />
+    <Compile Include="Repositories\IEstatesRepository.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,13 +123,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Border.png" />
+    <Resource Include="Resources\Border.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Cringe House.png" />
+    <Resource Include="Resources\Cringe House.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Cringe House %28icon%29.png" />
+    <Resource Include="Resources\Cringe House %28icon%29.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

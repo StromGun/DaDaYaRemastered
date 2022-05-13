@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DaDaYaRemastered"
         mc:Ignorable="d"
-        Title="Главное окно" Height="700" Width="1000" WindowStartupLocation="CenterScreen" Icon="Cringe House (icon).png">
+        Title="Главное окно" Height="700" Width="1000" WindowStartupLocation="CenterScreen" Icon="Resources\Cringe House (icon).png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -16,8 +16,8 @@
         <!--Header-->
 
         <Grid Grid.Row="0" Background="#FFCFF7FF">
-            <Image Source="Border.png" Stretch="Fill"/>
-            <Image Source="Cringe House.png" HorizontalAlignment="Left" Margin="40 0" VerticalAlignment="Center"/>
+            <Image Source="Resources\Border.png" Stretch="Fill"/>
+            <Image Source="Resources\Cringe House.png" HorizontalAlignment="Left" Margin="40 0" VerticalAlignment="Center"/>
             <Label Content="CringeHouse" HorizontalAlignment="Center" VerticalAlignment="Center"
                    FontSize="40" FontWeight="UltraBold" Margin="0 -20 0 0">
                 <Label.Foreground>
@@ -53,7 +53,7 @@
 
                         <ListView Name="estateList" HorizontalAlignment="Left" Height="256" Margin="10 1 0 0"
                                   VerticalAlignment="Top" Width="339" Grid.Row="1" Grid.Column="0"
-                                  SelectionChanged="estateList_SelectionChanged" ItemsSource="{Binding Collections}" >
+                                  SelectionChanged="estateList_SelectionChanged" ItemsSource="{Binding CollectionEstate}" >
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
@@ -85,7 +85,7 @@
 
                         <Label Content="Город:" Margin="10,60,210,90" Grid.Row="2" Grid.Column="0" />
                         <TextBox Margin="160,60,-5,90" Grid.Row="2" Name="SortCity" VerticalContentAlignment="Center" Grid.Column="0"
-                                 TextChanged="SortCity_TextChanged"/>
+                                 SelectionChanged="SortCity_SelectionChanged"/>
 
                         <Button Name="addEstate" Content="Добавить" Grid.Row="2" Grid.Column="1"
                                 Margin="281,130,236,16" Click="addEstate_Click"/>
@@ -114,20 +114,19 @@
 
 
                         <!--Left-->
-                        <ListView Grid.Row="1" Margin="10 10 40 10">
+                        <ListView x:Name="OwnerList" Grid.Row="1" Margin="10 10 40 10" ItemsSource="{Binding CollectionOwners}">
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
-                                        <GridViewColumn/>
-                                        <GridViewColumn/>
-                                        <GridViewColumn/>
+                                        <GridViewColumn Header="ФИО продавца" DisplayMemberBinding="{Binding OwnerName}"/>
+                                        <GridViewColumn Header="Номер телефона" DisplayMemberBinding="{Binding OwnerTelephone}"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
                         </ListView>
 
                         <!--Right-->
-                        <ListView Grid.Row="1" Grid.Column="1" Margin="10 10 40 10">
+                        <ListView x:Name="BuyerList" Grid.Row="1" Grid.Column="1" Margin="10 10 40 10">
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
@@ -138,11 +137,16 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                    <Button Name="addBuyer" Content="Добавить" Grid.Row="2"  Margin="-70 20 20 20" Style="{StaticResource buttonContracts}"/>
-                    <Button Name="changeBuyer" Content="Изменить" Grid.Row="2" Margin="-220 20 20 20" Style="{StaticResource buttonContracts}"/>
-                    <Button Name="deleteBuyer" Content="Удалить" Grid.Row="2" Margin="-370 20 20 20" Style="{StaticResource buttonContracts}"/>
-                    <Button x:Name="changeOwner" Content="Изменить" Grid.Row="2" Grid.Column="1" Margin="0" Style="{StaticResource buttonContracts}"/>
-                    <Button x:Name="deleteOwner" Content="Удалить" Grid.Row="2" Grid.Column="1" Margin="200 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button Name="addBuyer" Content="Добавить" Grid.Row="2"  Click="addBuyer_Click" Grid.Column="1"
+                            Margin="70 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button Name="changeBuyer" Content="Изменить" Grid.Row="2" Click="changeBuyer_Click" Grid.Column="1"
+                            Margin="220 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button Name="deleteBuyer" Content="Удалить" Grid.Row="2" Click="deleteBuyer_Click" Grid.Column="1"
+                            Margin="370 20 20 20" Style="{StaticResource buttonContracts}"/>
+                    <Button x:Name="changeOwner" Content="Изменить" Grid.Row="2"  Click="changeOwner_Click"
+                            Margin="-220 20 20 20" Style="{StaticResource buttonContracts}"/>
+                    <Button x:Name="deleteOwner" Content="Удалить" Grid.Row="2" Click="deleteOwner_Click"
+                            Margin="-370 20 20 20" Style="{StaticResource buttonContracts}"/>
                     </Grid>
 
                 </TabItem>
