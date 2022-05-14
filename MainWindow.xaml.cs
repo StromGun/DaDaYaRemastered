@@ -13,6 +13,8 @@ namespace DaDaYaRemastered
     {
         public string connectionString;
 
+        public bool AuthPersonal;
+
         private IOwnerRepository _ownerRepository;
         private IEstatesRepository estateRepository;
         private IBuyerRepository buyerRepository;
@@ -24,6 +26,8 @@ namespace DaDaYaRemastered
             UpdateSelectedEstate();
             UpdateSelectedOwner();
             UpdateSelectedBuyers();
+
+            GuestMode();
 
         }
 
@@ -224,7 +228,19 @@ namespace DaDaYaRemastered
         }
 
         
-
-        
+        private void GuestMode()
+        {
+            if (AuthPersonal == false)
+            {
+                addBuyer.Visibility = Visibility.Hidden;
+                addEstate.Visibility = Visibility.Hidden;
+                changeBuyer.Visibility = Visibility.Hidden;
+                changeEstate.Visibility = Visibility.Hidden;
+                changeOwner.Visibility = Visibility.Hidden;
+                deleteBuyer.Visibility = Visibility.Hidden;
+                deleteEstate.Visibility = Visibility.Hidden;
+                deleteOwner.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

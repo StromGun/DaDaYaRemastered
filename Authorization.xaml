@@ -1,0 +1,65 @@
+﻿<Window x:Class="DaDaYaRemastered.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DaDaYaRemastered"
+        mc:Ignorable="d"
+        Title="Authorization" Height="450" Width="600" WindowStartupLocation="CenterScreen" Icon="Resources\Cringe House (icon).png" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF009CE0" Offset="1"/>
+                <GradientStop Color="#FFCFF7FF" Offset="0.156"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+            
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Background="#FFCFF7FF">
+            <Image Source="Resources\Border.png" Stretch="Fill"/>
+            <Image Source="Resources\Cringe House.png" HorizontalAlignment="Left" Margin="20 0" VerticalAlignment="Center"/>
+            <Label Content="CringeHouse" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="25" FontWeight="UltraBold" Margin="0 -10 0 0">
+                <Label.Foreground>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF06FF00"/>
+                        <GradientStop Color="#FF28CDFF" Offset="0.163"/>
+                    </RadialGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Label Content="Агентство недвижимости" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="11"
+                   FontWeight="UltraBold" Margin="0 0 0 10" Foreground="#FF1FCE27"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Label Content="Login" Margin="0 0 150 100"
+                   Style="{StaticResource authLabel}"/>
+            <Label Content="Password" Margin="0 0 170 30"
+                   Style="{StaticResource authLabel}"/>
+
+            <TextBox x:Name="loginBox" Width="120" Height="30" Margin="10 0 0 100" VerticalContentAlignment="Center"
+                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <PasswordBox x:Name="passwordBox" Width="120" Height="30" Margin="10 0 0 30" VerticalContentAlignment="Center"
+                         VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="30" Margin="10 40 0 0"
+                    Click="loginButton_Click"/>
+            <Button x:Name="guestButton" Content="Войти как клиент" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="30" Margin="0 0 10 10"
+                    Click="guestButton_Click"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+
+        </Grid>
+        <Border Grid.Row="0" Grid.ColumnSpan="3" BorderThickness="2" BorderBrush="White"/>
+    </Grid>
+</Window>

@@ -59,6 +59,9 @@
     <Compile Include="AddWindows\AddBuyerWindow.xaml.cs">
       <DependentUpon>AddBuyerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\BuyerRepository.cs" />
     <Compile Include="ChangeWindows\ChangeOwnerWindow.xaml.cs">
       <DependentUpon>ChangeOwnerWindow.xaml</DependentUpon>
@@ -71,6 +74,10 @@
       <DependentUpon>UpdateBuyerWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AddWindows\AddBuyerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Authorization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

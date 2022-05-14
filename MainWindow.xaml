@@ -29,6 +29,10 @@
             </Label>
             <Label Content="Агенство недвижимости" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    FontWeight="ExtraBlack" Margin="0 50 0 0 " Foreground="#FF00BAFF"/>
+            <RadioButton x:Name="authName" Content="{Binding auth}" 
+                         HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 50 0 0"/>
+            <RadioButton x:Name="authRB" HorizontalAlignment="Right" 
+                         VerticalAlignment="Center" Margin="0 50 0 0" Visibility="Hidden" Opacity="0"/>
         </Grid>
 
         <!--Body-->
