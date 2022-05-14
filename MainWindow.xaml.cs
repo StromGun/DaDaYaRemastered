@@ -15,6 +15,7 @@ namespace DaDaYaRemastered
 
         private IOwnerRepository _ownerRepository;
         private IEstatesRepository estateRepository;
+        private IBuyerRepository buyerRepository;
 
         public MainWindow()
         {
@@ -22,6 +23,7 @@ namespace DaDaYaRemastered
 
             UpdateSelectedEstate();
             UpdateSelectedOwner();
+            UpdateSelectedBuyers();
 
         }
 
@@ -124,19 +126,51 @@ namespace DaDaYaRemastered
 
         #endregion
         #region Action with Buyers
+        void UpdateSelectedBuyers()
+        {
+            buyerRepository = new BuyerRepository();
+            BuyerList.Items.Clear();
+            foreach (CollectionBuyers buyer in buyerRepository.GetAll())
+            {
+                BuyerList.Items.Add(buyer);
+            }
+        }
+
         private void addBuyer_Click(object sender, RoutedEventArgs e)
         {
+            AddBuyerWindow addBuyerWindow = new AddBuyerWindow();
+            addBuyerWindow.Owner = this;
+            addBuyerWindow.ShowDialog();
 
+            UpdateSelectedBuyers();
         }
 
         private void changeBuyer_Click(object sender, RoutedEventArgs e)
         {
-
+            if( BuyerList.SelectedItem is CollectionBuyers)
+            {
+                UpdateBuyerWindow updateBuyerWindow = new UpdateBuyerWindow((CollectionBuyers)BuyerList.SelectedItem);
+                updateBuyerWindow.Owner = this;
+                updateBuyerWindow.ShowDialog();
+                UpdateSelectedBuyers();
+            }
+            else
+            {
+                MessageBox.Show("Объект не выбран");
+            }
         }
 
         private void deleteBuyer_Click(object sender, RoutedEventArgs e)
         {
-
+            if ( BuyerList.SelectedItem is CollectionBuyers)
+            {
+                buyerRepository.DeleteBuyer((CollectionBuyers)BuyerList.SelectedItem);
+                UpdateSelectedBuyers();
+            }
+            else
+            {
+                MessageBox.Show("Объект не выбран");
+            }
         }
         #endregion
         #region Sort

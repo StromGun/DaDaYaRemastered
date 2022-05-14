@@ -56,11 +56,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddWindows\AddBuyerWindow.xaml.cs">
+      <DependentUpon>AddBuyerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\BuyerRepository.cs" />
     <Compile Include="ChangeWindows\ChangeOwnerWindow.xaml.cs">
       <DependentUpon>ChangeOwnerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Collections\CollectionBuyers.cs" />
+    <Compile Include="Repositories\IBuyerRepository.cs" />
     <Compile Include="Repositories\IOwnerRepository.cs" />
     <Compile Include="Repositories\OwnerRepository.cs" />
+    <Compile Include="ChangeWindows\UpdateBuyerWindow.xaml.cs">
+      <DependentUpon>UpdateBuyerWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddWindows\AddBuyerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChangeWindows\ChangeOwnerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +108,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ChangeWindows\UpdateBuyerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -15,7 +15,7 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 using (SqlCommand insertCommand = new SqlCommand("Insert Into dbo.EstatesTable " +
                                "(EstateName, Price, Square, " +
@@ -46,7 +46,7 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
               using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM dbo.EstatesTable " +
                                "WHERE Id = @Id", connection))
@@ -66,7 +66,7 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.EstatesTable " +
                                "SET " +
@@ -102,7 +102,7 @@ namespace DaDaYaRemastered
             //
             // поменять connection
             //
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 connection.Open();
 

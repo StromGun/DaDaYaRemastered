@@ -13,7 +13,7 @@ namespace DaDaYaRemastered
 
         public void AddOwner(CollectionOwners owners)
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand("Insert into Owners" +
                     "(OwnerName, OwnerTelephone)" +
@@ -33,7 +33,7 @@ namespace DaDaYaRemastered
         }
         public void DeleteOwner(CollectionOwners owners)
         {
-            using(SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using(SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM dbo.Owners WHERE Id = @id", connection))
                 {
@@ -50,7 +50,7 @@ namespace DaDaYaRemastered
 
         public void UpdateOwner(CollectionOwners owners)
         {
-            using(SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using(SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 using (SqlCommand updateCommand = new SqlCommand("Update dbo.Owners " +
                     "Set " +
@@ -73,7 +73,7 @@ namespace DaDaYaRemastered
 
         public IEnumerable<CollectionOwners> GetAll()
         {
-            using(SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using(SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["CollegeConnection"].ConnectionString))
             {
                 connection.Open();
 

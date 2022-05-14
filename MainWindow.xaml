@@ -126,13 +126,13 @@
                         </ListView>
 
                         <!--Right-->
-                        <ListView x:Name="BuyerList" Grid.Row="1" Grid.Column="1" Margin="10 10 40 10">
+                        <ListView x:Name="BuyerList" Grid.Row="1" Grid.Column="1" Margin="10 10 40 10" ItemsSource="{Binding CollectionBuyers}">
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
-                                        <GridViewColumn/>
-                                        <GridViewColumn/>
-                                        <GridViewColumn/>
+                                        <GridViewColumn Header="ФИО покупателя" DisplayMemberBinding="{Binding BuyerName}"/>
+                                        <GridViewColumn Header="Номер телефона" DisplayMemberBinding="{Binding BuyerTelephone}"/>
+                                        <GridViewColumn Header="Назначение объекта" DisplayMemberBinding="{Binding EstateName}"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
