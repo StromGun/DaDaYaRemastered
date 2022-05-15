@@ -22,10 +22,20 @@ namespace DaDaYaRemastered
         CollectionBuyers collectionBuyers = new CollectionBuyers();
         IBuyerRepository buyerRepository = new BuyerRepository();
 
-        public AddBuyerWindow()
+        public AddBuyerWindow(CollectionEstates estate)
         {
             InitializeComponent();
             DataContext = collectionBuyers;
+            GetData(estate);
+        }
+
+        void GetData(CollectionEstates estate)
+        {
+            if(estate == null) {}
+            else 
+            { 
+                estateName.Text = estate.EstateName;
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

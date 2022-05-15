@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DaDaYaRemastered"
         mc:Ignorable="d"
-        Title="Главное окно" Height="700" Width="1000" WindowStartupLocation="CenterScreen" Icon="Resources\Cringe House (icon).png">
+        Title="Главное окно" Height="700" Width="1000" WindowStartupLocation="CenterScreen" Icon="Resources\Cringe House (icon).png" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -29,10 +29,6 @@
             </Label>
             <Label Content="Агенство недвижимости" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    FontWeight="ExtraBlack" Margin="0 50 0 0 " Foreground="#FF00BAFF"/>
-            <RadioButton x:Name="authName" Content="{Binding auth}" 
-                         HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 50 0 0"/>
-            <RadioButton x:Name="authRB" HorizontalAlignment="Right" 
-                         VerticalAlignment="Center" Margin="0 50 0 0" Visibility="Hidden" Opacity="0"/>
         </Grid>
 
         <!--Body-->
@@ -97,6 +93,8 @@
                                 Margin="399,130,118,16" Click="changeEstate_Click"/>
                         <Button Name="deleteEstate" Content="Удалить" Grid.Row="2" Grid.Column="1"
                                 Margin="515,130,2,16" Click="deleteEstate_Click"/>
+                        <Button Name="buyEstate" Content="Подать заявку" Grid.Row="2" Grid.Column="1"
+                                Margin="515,130,2,16" Click="buyEstate_Click"/>
                     </Grid>
                 </TabItem>
 
@@ -162,17 +160,16 @@
                             <RowDefinition Height="90*"/>
                             <RowDefinition Height="10*"/>
                         </Grid.RowDefinitions>
-                        <ListView x:Name="TretiesList" Margin="1 10 1 1" ItemsSource="{Binding Treties}"
-                                  SelectionChanged="TretiesList_SelectionChanged" Grid.ColumnSpan="2">
+                        <ListView x:Name="TretiesList" Margin="1 10 1 1" ItemsSource="{Binding Treties}" Grid.ColumnSpan="2">
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
-                                        <GridViewColumn Header="Номер договора" x:Name="numberTreat" Width="100" DisplayMemberBinding="{Binding Id}"/>
-                                        <GridViewColumn Header="Дата заключения" Width="100" DisplayMemberBinding="{Binding DataAccept}"/>
-                                        <GridViewColumn Header="Покупатель" Width="100" DisplayMemberBinding="{Binding Buyer}"/>
-                                        <GridViewColumn Header="Продавец" Width="100" DisplayMemberBinding="{Binding Consumer}"/>
+                                        <GridViewColumn Header="Номер договора" x:Name="numberTreat" Width="150" DisplayMemberBinding="{Binding NumberContract}"/>
+                                        <GridViewColumn Header="Дата заключения" Width="110" DisplayMemberBinding="{Binding DateSigning}"/>
+                                        <GridViewColumn Header="Покупатель" Width="200" DisplayMemberBinding="{Binding Buyer}"/>
+                                        <GridViewColumn Header="Продавец" Width="200" DisplayMemberBinding="{Binding Buyer}"/>
                                         <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}"/>
-                                        <GridViewColumn Header="Объект недвижимости"  Width="500" DisplayMemberBinding="{Binding EstateName}"/>
+                                        <GridViewColumn Header="Объект недвижимости"  Width="200" DisplayMemberBinding="{Binding EstateName}"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
@@ -180,9 +177,9 @@
 
 
                         <Grid Grid.Row="1">
-                            <Button x:Name="B" Content="Удалить" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                            <Button x:Name="deleteContract" Content="Удалить" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="deleteContract_Click"
                                     Style="{StaticResource buttonContracts}"/>
-                            <Button x:Name="sB" Content="" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                            <Button x:Name="addContract" Content="" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="addContract_Click"
                                     Style="{StaticResource buttonContracts}" Margin="10 10 90 10"/>
                         </Grid>
                     </Grid>

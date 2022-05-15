@@ -29,7 +29,7 @@ namespace DaDaYaRemastered
             if (loginBox.Text == "choyrt" && passwordBox.Password == "Dmitriy")
             {
                 MainWindow main = new MainWindow();
-                main.authName.Content = "Personal";
+                main.AuthPersonal = true;
                 main.Show();
                 Close();
             }

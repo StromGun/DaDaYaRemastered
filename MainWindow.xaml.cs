@@ -18,6 +18,7 @@ namespace DaDaYaRemastered
         private IOwnerRepository _ownerRepository;
         private IEstatesRepository estateRepository;
         private IBuyerRepository buyerRepository;
+        private IContractRepository contractRepository;
 
         public MainWindow()
         {
@@ -26,11 +27,20 @@ namespace DaDaYaRemastered
             UpdateSelectedEstate();
             UpdateSelectedOwner();
             UpdateSelectedBuyers();
-
-            GuestMode();
+            UpdateSelectedContracts();
 
         }
-
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (AuthPersonal == false )
+            {
+                GuestMode();     
+            }
+            else if (AuthPersonal == true)
+            {
+                PersonalMode();
+            }    
+        }
         #region Action with Estate
 
 
@@ -142,7 +152,7 @@ namespace DaDaYaRemastered
 
         private void addBuyer_Click(object sender, RoutedEventArgs e)
         {
-            AddBuyerWindow addBuyerWindow = new AddBuyerWindow();
+            AddBuyerWindow addBuyerWindow = new AddBuyerWindow((CollectionEstates)estateList.SelectedItem);
             addBuyerWindow.Owner = this;
             addBuyerWindow.ShowDialog();
 
@@ -177,6 +187,39 @@ namespace DaDaYaRemastered
             }
         }
         #endregion
+        #region Action with Contracts
+        void UpdateSelectedContracts()
+        {
+            contractRepository = new ContractRepository();
+            TretiesList.Items.Clear();
+            foreach (CollectionContracts contrats in contractRepository.GetAll())
+            {
+                TretiesList.Items.Add(contrats);
+            }
+        }
+
+
+        private void deleteContract_Click(object sender, RoutedEventArgs e)
+        {
+            if (TretiesList.SelectedItem is CollectionContracts)
+            {
+                contractRepository.DeleteContract((CollectionContracts)TretiesList.SelectedItem);
+                UpdateSelectedContracts();
+            }
+            else
+            {
+                MessageBox.Show("Объект не выбран");
+            }
+        }
+        private void addContract_Click(object sender, RoutedEventArgs e)
+        {
+            AddContractWindow addContractWindow = new AddContractWindow();
+            addContractWindow.Owner = this;
+            addContractWindow.ShowDialog();
+
+            UpdateSelectedContracts();
+        }
+        #endregion
         #region Sort
 
         private void SortName_Selected(object sender, RoutedEventArgs e)
@@ -209,38 +252,47 @@ namespace DaDaYaRemastered
         }
         private void SortCity_SelectionChanged(object sender, RoutedEventArgs e)
         {
-           // estateRepository = new EstateRepository();
-           // estateList.Items.Clear();
-           // foreach (CollectionEstates estate in estateRepository.GetAll())
-           // {
-           //     if (SortCity.Text == estate.City.ToString().Trim() && SortCity.Text!=null)
-           //        estateList.Items.Add(estate);
-           // }
+            estateRepository = new EstateRepository();
+            estateList.Items.Clear();
+            foreach (CollectionEstates estate in estateRepository.GetAll())
+            {
+                if (SortCity.Text == estate.City.ToString().Trim() && SortCity.Text!=null)
+                   estateList.Items.Add(estate);
+            }
 
         }
         #endregion
 
-
-
-        private void TretiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        
         private void GuestMode()
         {
-            if (AuthPersonal == false)
-            {
-                addBuyer.Visibility = Visibility.Hidden;
-                addEstate.Visibility = Visibility.Hidden;
-                changeBuyer.Visibility = Visibility.Hidden;
-                changeEstate.Visibility = Visibility.Hidden;
-                changeOwner.Visibility = Visibility.Hidden;
-                deleteBuyer.Visibility = Visibility.Hidden;
-                deleteEstate.Visibility = Visibility.Hidden;
-                deleteOwner.Visibility = Visibility.Hidden;
-            }
+            //addBuyer.Visibility = Visibility.Hidden;
+            addEstate.Visibility = Visibility.Hidden;
+            changeBuyer.Visibility = Visibility.Hidden;
+            changeEstate.Visibility = Visibility.Hidden;
+            changeOwner.Visibility = Visibility.Hidden;
+            deleteBuyer.Visibility = Visibility.Hidden;
+            deleteEstate.Visibility = Visibility.Hidden;
+            deleteOwner.Visibility = Visibility.Hidden;
+            Treties.Visibility = Visibility.Hidden;
         }
+
+        private void PersonalMode()
+        {
+            buyEstate.Visibility = Visibility.Hidden;
+        }
+
+        private void buyEstate_Click(object sender, RoutedEventArgs e)
+        {
+            if (estateList.SelectedItem is CollectionEstates)
+            {
+                AddBuyerWindow addBuyerWindow = new AddBuyerWindow((CollectionEstates)estateList.SelectedItem);
+                addBuyerWindow.Owner = this;
+                addBuyerWindow.ShowDialog();
+            }
+
+            UpdateSelectedBuyers();
+        }
+
+      
     }
 }
