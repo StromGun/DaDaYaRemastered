@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -34,12 +32,12 @@ namespace DaDaYaRemastered
         {
             if (AuthPersonal == false )
             {
-                GuestMode();     
+                GuestMode();
             }
             else if (AuthPersonal == true)
             {
                 PersonalMode();
-            }    
+            }
         }
         #region Action with Estate
 

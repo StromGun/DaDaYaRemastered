@@ -16,9 +16,7 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="5*"/>
-
         </Grid.RowDefinitions>
-
         <Grid Grid.Row="1"  Background="AliceBlue">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
@@ -39,7 +37,6 @@
             <Label Grid.Row="6"  Content="ФИО продавца"/>
             <Label Grid.Row="7"  Content="Номер телефона"/>
         </Grid>
-
         <Grid Grid.Column="1" Grid.Row="1"  Background="AliceBlue" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
@@ -58,12 +55,9 @@
             <TextBox x:Name="estateAdress" Grid.Row="4"/>
             <TextBox x:Name="estateBirthday" Grid.Row="5"/>
             <TextBox x:Name="estateOwner" Grid.Row="6"/>
-            <xctk:MaskedTextBox x:Name="ownerTelephone" Grid.Row="7" Width="200" Margin="5 14 0 14" HorizontalAlignment="Left" 
-                                Mask="+8 000 000-00-00" CaretIndex="0" />
-            <Button x:Name="AddButton" Content="Добавить" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="7"
-                    Margin="0 16 100 0 " Click="AddButton_Click"/>
-            <Button x:Name="CancelButton" Content="Отмена" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="7"
-                    Margin="0 16 10 0 " Click="CancelButton_Click"/>
+            <xctk:MaskedTextBox x:Name="ownerTelephone" Grid.Row="7" Width="200" Margin="5 14 0 14" HorizontalAlignment="Left" Mask="+8 000 000-00-00" CaretIndex="0" />
+            <Button x:Name="AddButton" Content="Добавить" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="7" Margin="0 16 100 0 " Click="AddButton_Click"/>
+            <Button x:Name="CancelButton" Content="Отмена" Width="80" Height="30" HorizontalAlignment="Right" Grid.Row="7" Margin="0 16 10 0 " Click="CancelButton_Click"/>
         </Grid>
     </Grid>
 </Window>

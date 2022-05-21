@@ -34,7 +34,6 @@
         <!--Body-->
         <Grid Grid.Row="1"  Background="#FFCFF7FF">
             <TabControl Name="Options" >
-
                 <!--Недвижимость-->
                 <TabItem Header="Недвижимость" Name="TabItemEstates" >
                     <Grid Background="AliceBlue">
@@ -47,54 +46,40 @@
                             <ColumnDefinition Width="355*"/>
                             <ColumnDefinition Width="609*"/>
                         </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="estateDescription" Grid.Row="1" Grid.Column="1" Margin="10 1 20 107"
-                                   Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding EstateDescription}"/>
-
-                        <ListView Name="estateList" HorizontalAlignment="Left" Height="256" Margin="10 1 0 0"
-                                  VerticalAlignment="Top" Width="339" Grid.Row="1" Grid.Column="0"
+                        <TextBlock x:Name="estateDescription" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding EstateDescription}"/>
+                        <ListView Name="estateList" HorizontalAlignment="Left" Height="256" Margin="10 1 0 0" VerticalAlignment="Top" Width="339" Grid.Row="1" Grid.Column="0"
                                   SelectionChanged="estateList_SelectionChanged" ItemsSource="{Binding CollectionEstate}" >
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
-                                        <GridViewColumn Header="Назначение объекта" 
-                                                        DisplayMemberBinding="{Binding EstateName}"/>
-                                        <GridViewColumn Header="Город" 
-                                                        DisplayMemberBinding="{Binding City}"/>
-                                        <GridViewColumn Header="Адрес" 
-                                                        DisplayMemberBinding="{Binding Adress}"/>
-                                        <GridViewColumn Header="Площадь" 
-                                                        DisplayMemberBinding="{Binding Square}"/>
-                                        <GridViewColumn Header="Цена" 
-                                                        DisplayMemberBinding="{Binding Price}"/>
-                                        <GridViewColumn Header="Дата постройки" 
-                                                        DisplayMemberBinding="{Binding Date}"/>
+                                        <GridViewColumn Header="Назначение объекта"  DisplayMemberBinding="{Binding EstateName}"/>
+                                        <GridViewColumn Header="Город"  DisplayMemberBinding="{Binding City}"/>
+                                        <GridViewColumn Header="Адрес"  DisplayMemberBinding="{Binding Adress}"/>
+                                        <GridViewColumn Header="Площадь" DisplayMemberBinding="{Binding Square}"/>
+                                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
+                                        <GridViewColumn Header="Дата постройки" DisplayMemberBinding="{Binding Date}"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
                         </ListView>
-
                         <Label Content="Сортировка объектов" Margin="10,10,210,130" Grid.Row="2" Grid.Column="0" />
                         <ComboBox Margin="160,10,1,140" Grid.Row="2" Name="Sort" VerticalContentAlignment="Center">
                             <ComboBoxItem Name="SortName" Content="по назначению" Selected="SortName_Selected"/>
                             <ComboBoxItem Name="SortCost" Content="по цене" Selected="SortCost_Selected"/>
                             <ComboBoxItem Name="SortYear" Content="по году постройки" Selected="SortYear_Selected" />
-                            <ComboBoxItem Name="SortArea" Content="по площади" Selected="SortArea_Selected"/> 
+                            <ComboBoxItem Name="SortArea" Content="по площади" Selected="SortArea_Selected"/>
                             <ComboBoxItem Name="SortWithout" Content="без сортировки" Selected="SortWithout_Selected"/>
                         </ComboBox>
-
                         <Label Content="Город:" Margin="10,60,210,90" Grid.Row="2" Grid.Column="0" />
-                        <TextBox Margin="160,60,-5,90" Grid.Row="2" Name="SortCity" VerticalContentAlignment="Center" Grid.Column="0"
-                                 SelectionChanged="SortCity_SelectionChanged"/>
-
-                        <Button Name="addEstate" Content="Добавить" Grid.Row="2" Grid.Column="1"
-                                Margin="281,130,236,16" Click="addEstate_Click"/>
-                        <Button Name="changeEstate" Content="Изменить" Grid.Row="2" Grid.Column="1" 
-                                Margin="399,130,118,16" Click="changeEstate_Click"/>
-                        <Button Name="deleteEstate" Content="Удалить" Grid.Row="2" Grid.Column="1"
-                                Margin="515,130,2,16" Click="deleteEstate_Click"/>
-                        <Button Name="buyEstate" Content="Подать заявку" Grid.Row="2" Grid.Column="1"
-                                Margin="515,130,2,16" Click="buyEstate_Click"/>
+                        <TextBox Margin="160,60,-5,90" Grid.Row="2" Name="SortCity" VerticalContentAlignment="Center" Grid.Column="0" SelectionChanged="SortCity_SelectionChanged"/>
+                        <Button Name="addEstate" Content="Добавить" Grid.Row="2" Grid.Column="1" Template="{StaticResource button}" Width="100" Height="40" 
+                                HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0 0 225 15" Click="addEstate_Click" />
+                        <Button Name="changeEstate" Content="Изменить" Grid.Row="2" Grid.Column="1" Template="{StaticResource button}" Width="100" Height="40"
+                                VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 115 15" Click="changeEstate_Click"/>
+                        <Button Name="deleteEstate" Content="Удалить" Grid.Row="2" Grid.Column="1" Template="{StaticResource button}" Width="100" Height="40"
+                                VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 5 15" Click="deleteEstate_Click"/>
+                        <Button Name="buyEstate" Content="Подать заявку" Grid.Row="2" Grid.Column="1" Template="{StaticResource button}" Width="100" Height="40"
+                                VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 5 15" Click="buyEstate_Click"/>
                     </Grid>
                 </TabItem>
 
@@ -139,18 +124,17 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <Button Name="addBuyer" Content="Добавить" Grid.Row="2"  Click="addBuyer_Click" Grid.Column="1"
-                            Margin="70 20 20 20" Style="{StaticResource buttonContracts}"/>
-                        <Button Name="changeBuyer" Content="Изменить" Grid.Row="2" Click="changeBuyer_Click" Grid.Column="1"
-                            Margin="220 20 20 20" Style="{StaticResource buttonContracts}"/>
-                        <Button Name="deleteBuyer" Content="Удалить" Grid.Row="2" Click="deleteBuyer_Click" Grid.Column="1"
-                            Margin="370 20 20 20" Style="{StaticResource buttonContracts}"/>
-                    <Button x:Name="changeOwner" Content="Изменить" Grid.Row="2"  Click="changeOwner_Click"
-                            Margin="-220 20 20 20" Style="{StaticResource buttonContracts}"/>
-                    <Button x:Name="deleteOwner" Content="Удалить" Grid.Row="2" Click="deleteOwner_Click"
-                            Margin="-370 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button Name="addBuyer" Content="Добавить" Grid.Row="2"  Click="addBuyer_Click" Template="{StaticResource button}"
+                                Grid.Column="1" Margin="70 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button Name="changeBuyer" Content="Изменить" Grid.Row="2" Click="changeBuyer_Click" Template="{StaticResource button}"
+                                Grid.Column="1" Margin="220 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button Name="deleteBuyer" Content="Удалить" Grid.Row="2" Click="deleteBuyer_Click" Template="{StaticResource button}"
+                                Grid.Column="1" Margin="370 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button x:Name="changeOwner" Content="Изменить" Grid.Row="2"  Click="changeOwner_Click" Template="{StaticResource button}"
+                                Margin="-220 20 20 20" Style="{StaticResource buttonContracts}"/>
+                        <Button x:Name="deleteOwner" Content="Удалить" Grid.Row="2" Click="deleteOwner_Click" Template="{StaticResource button}"
+                                Margin="-370 20 20 20"  Style="{StaticResource buttonContracts}"/>
                     </Grid>
-
                 </TabItem>
 
                 <!--Договоры-->
@@ -178,14 +162,12 @@
 
                         <Grid Grid.Row="1">
                             <Button x:Name="deleteContract" Content="Удалить" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="deleteContract_Click"
-                                    Style="{StaticResource buttonContracts}"/>
-                            <Button x:Name="addContract" Content="" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="addContract_Click"
-                                    Style="{StaticResource buttonContracts}" Margin="10 10 90 10"/>
+                                    Style="{StaticResource buttonContracts}" Template="{StaticResource button}"/>
+                            <Button x:Name="addContract" Content="Добавить" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="addContract_Click"
+                                    Style="{StaticResource buttonContracts}" Margin="10 10 90 10" Template="{StaticResource button}"/>
                         </Grid>
                     </Grid>
                 </TabItem>
-
-
             </TabControl>
         </Grid>
 

@@ -50,7 +50,7 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <xctk:MaskedTextBox x:Name="dateSigning" Grid.Row="1" Width="200" Margin="5 14 0 14" HorizontalAlignment="Left" 
-                                Mask="00.00.0000" CaretIndex="0" />
+                                Mask="00/00/0000" CaretIndex="0" />
             <TextBox x:Name="buyer" Grid.Row="2"/>
             <TextBox x:Name="owner"  Grid.Row="3"/>
             <TextBox x:Name="price" Grid.Row="4"/>

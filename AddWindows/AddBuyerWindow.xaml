@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:DaDaYaRemastered"
         mc:Ignorable="d"
-        Title="AddBuyerWindow" Height="450" Width="800">
+        Title="AddBuyerWindow" Height="450" Width="800" Icon="/DaDaYaRemastered;component/Resources/Cringe House (icon).png" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"/>
